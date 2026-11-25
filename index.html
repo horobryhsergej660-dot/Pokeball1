@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PokéBalls | Энциклопедия</title>
+<!-- Библиотека для отображения 3D-моделей -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
   :root {
@@ -18,7 +19,9 @@
     --card-bg: rgba(30, 18, 55, 0.55);
     --card-border: rgba(168, 85, 247, 0.25);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     color: var(--text);
@@ -29,16 +32,19 @@
     min-height: 100vh;
     line-height: 1.6;
   }
+
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+  /* Header */
   header {
     padding: 20px 0;
     border-bottom: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 10;
-    background: rgba(7, 4, 15, 0.7);
+    background: rgba(7, 4, 15, 0.85);
   }
   .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  
   .logo {
     display: flex; align-items: center; gap: 12px;
     font-size: 1.6rem; font-weight: 800; letter-spacing: 2px;
@@ -47,9 +53,11 @@
   }
   .logo-icon { filter: drop-shadow(0 0 10px var(--violet-glow)); transition: transform .3s; }
   .logo:hover .logo-icon { transform: scale(1.15) rotate(15deg); }
-  nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; }
+  
+  nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; font-weight: 500; }
   nav a:hover { color: var(--violet-3); }
 
+  /* Hero */
   .hero { padding: 60px 0 40px; text-align: center; }
   .hero h1 {
     font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 10px;
@@ -70,7 +78,7 @@
   .author-block .name { font-weight: 700; color: #fff; font-size: 1.05rem; }
   .author-block .spec { color: var(--violet-3); font-size: .92rem; margin-top: 2px; }
 
-  /* Переключатель табов */
+  /* Viewer Tabs & Frame */
   .viewer-wrapper { display: flex; flex-direction: column; align-items: center; }
   .viewer-tabs {
     display: flex; gap: 12px; margin-bottom: 24px;
@@ -142,6 +150,7 @@
   }
   .video-purpose { max-width: 620px; margin: 10px auto 0; color: var(--text-dim); font-size: .98rem; }
 
+  /* Sections General */
   section { padding: 56px 0; }
   .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 32px; text-align: center; color: #fff; }
   .section-title::after {
@@ -149,19 +158,68 @@
     background: linear-gradient(90deg, transparent, var(--violet-2), transparent);
   }
 
+  /* Author Section */
   .about-author {
-    display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center;
+    display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start;
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 32px; backdrop-filter: blur(8px);
   }
-  .about-author img {
+  .about-author > img {
     width: 100%; border-radius: 16px;
     box-shadow: 0 0 30px var(--violet-glow);
     border: 1px solid var(--card-border);
+    object-fit: cover;
   }
   .about-author h3 { color: #fff; margin-bottom: 8px; font-size: 1.3rem; }
-  .about-author p { color: var(--text-dim); }
+  .about-author p { color: var(--text-dim); margin-bottom: 16px; }
 
+  .college-badge {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, var(--violet-2), var(--violet-1));
+    border: 1px solid var(--violet-3);
+    border-radius: 999px;
+    box-shadow: 0 0 20px var(--violet-glow);
+  }
+
+  .author-gallery {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-border);
+  }
+  .author-gallery figure { margin: 0; }
+  .author-gallery img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
+    transition: transform .3s, box-shadow .3s;
+    background: #000;
+  }
+  .author-gallery img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 30px var(--violet-glow);
+  }
+  .author-gallery figcaption {
+    margin-top: 8px;
+    font-size: .85rem;
+    color: var(--text-dim);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* Subjects */
   .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
   .subject-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -181,6 +239,7 @@
   .subject-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
   .subject-card p { color: var(--text-dim); font-size: .9rem; }
 
+  /* Balls Grid */
   .balls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
   .ball-card {
     background: var(--card-bg); border: 1px solid var(--card-border);
@@ -202,21 +261,23 @@
   }
   .ball-desc { font-size: .9rem; color: var(--text-dim); text-align: center; }
 
+  /* About & Footer */
   .about {
     background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;
     padding: 40px; backdrop-filter: blur(8px); max-width: 800px; margin: 0 auto;
     text-align: center; color: var(--text-dim);
   }
-
   footer {
     padding: 36px 0; text-align: center; color: var(--text-dim); font-size: .9rem;
     border-top: 1px solid var(--card-border);
   }
 
+  /* Mobile */
   @media (max-width: 640px) {
     .about-author { grid-template-columns: 1fr; text-align: center; }
-    .about-author img { max-width: 220px; margin: 0 auto; }
+    .about-author > img { max-width: 220px; margin: 0 auto; }
     .tab-btn { font-size: .82rem; padding: 8px 14px; }
+    .author-gallery { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -318,10 +379,27 @@
   <section id="author">
     <h2 class="section-title">Об авторе проекта</h2>
     <div class="about-author">
-      <img src="https://sun9-71.vkuserphoto.ru/s/v1/ig2/HZREbblQotyjMfbwUm9XHPa3IaS6enIlzZRWF5343qlf0j0fV42LBVcyuWENytSZuqnVi7tpmfjVxwYFwJGkRw3f.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1254x1254&from=bu&u=X_89s_OaEcUEnvLwCHW2Gx11TrHiphqfQFMcV9kO3gI&cs=1254x0" alt="Эмблема">" alt="Эмблема" onerror="this.style.display='none'">
+      <img src="https://sun9-71.vkuserphoto.ru/s/v1/ig2/HZREbblQotyjMfbwUm9XHPa3IaS6enIlzZRWF5343qlf0j0fV42LBVcyuWENytSZuqnVi7tpmfjVxwYFwJGkRw3f.jpg?quality=95&cs=1254x0" alt="Эмблема" onerror="this.style.display='none'">
       <div>
         <h3>Хоробрых Сергей Вадимович</h3>
         <p>Студент специальности «Информационные системы и программирование». Данный проект — учебная работа, объединяющая веб-разработку, 3D-графику и дизайн интерфейсов: энциклопедия покеболов с интерактивным каталогом и 3D-анимацией модели покебола.</p>
+        <div class="college-badge">ГПОУ «ВАГПК»</div>
+      </div>
+
+      <!-- Галерея картинок в этом же прямоугольнике -->
+      <div class="author-gallery">
+        <figure>
+          <img src="https://vagpk11.gosuslugi.ru/netcat_files/8/50/02000fa2738911f1b4f5e2385b24c6f4_1.jpg" alt="ГПОУ ВАГПК" onerror="this.parentElement.style.display='none'">
+          <figcaption>ГПОУ «ВАГПК»</figcaption>
+        </figure>
+        <figure>
+          <img src="https://chipburg.com/media/images/ein-computerbildschirm-mit-blauem-hintergrund-mit-tastatur-und-maus_1103290-37139.jpg" alt="Информационные системы" onerror="this.parentElement.style.display='none'">
+          <figcaption>Информационные системы</figcaption>
+        </figure>
+        <figure>
+          <img src="https://xn----7sblcehjsjaso8aoc.xn--p1ai/pluginfile.php/221374/course/overviewfiles/%D0%97%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B8.jpg" alt="Программирование" onerror="this.parentElement.style.display='none'">
+          <figcaption>Программирование</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -354,7 +432,7 @@
 
 <footer>
   <div class="container">
-    PokéBalls Encyclopedia · Автор: Хоробрых С. В. · Информационные системы и программирование · 2026
+    PokéBalls Encyclopedia · Автор: Хоробрых С. В. · ГПОУ «ВАГПК» · Информационные системы и программирование · 2026
   </div>
 </footer>
 
