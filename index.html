@@ -45,6 +45,7 @@
     font-size: 1.6rem; font-weight: 800; letter-spacing: 2px;
     background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
     -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 30px var(--violet-glow);
   }
   nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; }
   nav a:hover { color: var(--violet-3); }
@@ -252,7 +253,7 @@
   <section id="author">
     <h2 class="section-title">Об авторе проекта</h2>
     <div class="about-author">
-      <img src="img/emblem.png" alt="Эмблема" onerror="this.src='data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'220\' viewBox=\'0 0 220 220\'><rect width=\'220\' height=\'220\' fill=\'%231a0f33\' rx=\'16\'/><text x=\'110\' y=\'110\' font-size=\'40\' fill=\'%23a855f7\' text-anchor=\'middle\' dominant-baseline=\'middle\'>🛡️</text></svg>')">
+      <img src="img/emblem.png" alt="Эмблема" onerror="this.style.display='none'">
       <div>
         <h3>Хоробрых Сергей Вадимович</h3>
         <p>Студент специальности «Информационные системы и программирование». Данный проект — учебная работа, объединяющая веб-разработку, 3D-графику и дизайн интерфейсов: энциклопедия покеболов с интерактивным каталогом и 3D-анимацией модели покебола.</p>
