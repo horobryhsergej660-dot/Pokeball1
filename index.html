@@ -8,7 +8,6 @@
   :root {
     --bg-0: #07040f;
     --bg-1: #0f0820;
-    --bg-2: #1a0f33;
     --violet-1: #7c3aed;
     --violet-2: #a855f7;
     --violet-3: #c084fc;
@@ -30,287 +29,186 @@
       linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 50%, var(--bg-0) 100%);
     min-height: 100vh;
     line-height: 1.6;
-    overflow-x: hidden;
   }
 
-  /* Декоративные "звёзды" */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
-      radial-gradient(1px 1px at 70% 80%, rgba(192,132,252,0.5), transparent),
-      radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.3), transparent),
-      radial-gradient(1px 1px at 85% 20%, rgba(168,85,247,0.4), transparent);
-    pointer-events: none;
-    z-index: 0;
-  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header */
   header {
-    padding: 28px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    position: sticky; top: 0; z-index: 10;
     background: rgba(7, 4, 15, 0.7);
   }
-
-  .header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
+  .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
   .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-size: 1.6rem; font-weight: 800; letter-spacing: 2px;
     background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 30px var(--violet-glow);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
+  nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; }
+  nav a:hover { color: var(--violet-3); }
 
-  nav a {
-    color: var(--text-dim);
-    text-decoration: none;
-    margin-left: 24px;
-    font-weight: 500;
-    transition: color 0.2s, text-shadow 0.2s;
-  }
-
-  nav a:hover {
-    color: var(--violet-3);
-    text-shadow: 0 0 12px var(--violet-glow);
-  }
-
-  /* Hero */
-  .hero {
-    padding: 80px 0 60px;
-    text-align: center;
-  }
-
+  .hero { padding: 60px 0 40px; text-align: center; }
   .hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 800;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #fff 0%, var(--violet-3) 60%, var(--violet-1) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff, var(--violet-3) 60%, var(--violet-1));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
+  .hero p { color: var(--text-dim); font-size: 1.05rem; max-width: 640px; margin: 0 auto 18px; }
 
-  .hero p {
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    max-width: 640px;
-    margin: 0 auto 40px;
+  .author-block {
+    display: inline-block;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px 28px;
+    margin-bottom: 36px;
+    backdrop-filter: blur(8px);
   }
+  .author-block .name { font-weight: 700; color: #fff; font-size: 1.05rem; }
+  .author-block .spec { color: var(--violet-3); font-size: .92rem; margin-top: 2px; }
 
-  /* Квадратное окно для 3D-видео */
+  /* Квадратное окно 3D-видео */
   .video-frame {
-    width: min(520px, 90vw);
+    width: min(480px, 88vw);
     aspect-ratio: 1 / 1;
     margin: 0 auto;
-    position: relative;
     border-radius: 20px;
     padding: 4px;
     background: linear-gradient(135deg, var(--violet-2), var(--violet-1), #2e1065);
-    box-shadow:
-      0 0 40px var(--violet-glow),
-      0 0 80px rgba(124, 58, 237, 0.3),
-      inset 0 0 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 40px var(--violet-glow), 0 0 80px rgba(124, 58, 237, 0.3);
     animation: pulseGlow 4s ease-in-out infinite;
   }
-
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 40px var(--violet-glow), 0 0 80px rgba(124, 58, 237, 0.3); }
-    50% { box-shadow: 0 0 60px var(--violet-glow), 0 0 120px rgba(168, 85, 247, 0.5); }
+    0%,100% { box-shadow: 0 0 40px var(--violet-glow); }
+    50% { box-shadow: 0 0 70px var(--violet-glow), 0 0 120px rgba(168,85,247,.4); }
   }
+  .video-inner { width: 100%; height: 100%; border-radius: 16px; overflow: hidden; background: #000; }
+  .video-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  .video-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
-    position: relative;
-  }
-
-  .video-inner video,
-  .video-inner iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .video-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    background:
-      radial-gradient(circle at center, rgba(124, 58, 237, 0.2), transparent 70%),
-      #000;
-    text-align: center;
-    padding: 20px;
-    video-placeholder { display: none; }
-  }
-
-  .video-placeholder .icon {
-    font-size: 3rem;
-    margin-bottom: 12px;
+  .video-caption {
+    margin: 18px auto 0;
+    font-size: 1.5rem; font-weight: 800;
     color: var(--violet-3);
-    filter: drop-shadow(0 0 10px var(--violet-glow));
+    text-shadow: 0 0 20px var(--violet-glow);
+    letter-spacing: 1px;
+  }
+  .video-purpose {
+    max-width: 620px; margin: 10px auto 0;
+    color: var(--text-dim); font-size: .98rem;
   }
 
-  /* Секции */
-  section {
-    padding: 60px 0;
-  }
-
+  section { padding: 56px 0; }
   .section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 32px;
-    text-align: center;
-    color: #fff;
-    position: relative;
+    font-size: 2rem; font-weight: 700; margin-bottom: 32px; text-align: center; color: #fff;
   }
-
   .section-title::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    margin: 12px auto 0;
+    content: ''; display: block; width: 80px; height: 3px; margin: 12px auto 0;
     background: linear-gradient(90deg, transparent, var(--violet-2), transparent);
-    border-radius: 2px;
   }
 
-  /* Сетка покеболов */
-  .balls-grid {
+  /* Об авторе */
+  .about-author {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px;
+    backdrop-filter: blur(8px);
+  }
+  .about-author img {
+    width: 100%; border-radius: 16px;
+    box-shadow: 0 0 30px var(--violet-glow);
+    border: 1px solid var(--card-border);
+  }
+  .about-author h3 { color: #fff; margin-bottom: 8px; font-size: 1.3rem; }
+  .about-author p { color: var(--text-dim); }
+
+  /* Дисциплины */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
+  .subject-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(8px);
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .subject-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--violet-2);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.35);
+  }
+  .subject-code {
+    display: inline-block;
+    font-size: .78rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 999px;
+    background: rgba(168, 85, 247, 0.18);
+    color: var(--violet-3);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    margin-bottom: 12px;
+  }
+  .subject-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+  .subject-card p { color: var(--text-dim); font-size: .9rem; }
 
+  /* Картинка разработчика */
+  .dev-banner { text-align: center; }
+  .dev-banner img {
+    max-width: 640px; width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
+  }
+  .dev-banner p { color: var(--text-dim); margin-top: 14px; }
+
+  /* Каталог */
+  .balls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
   .ball-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 20px;
     backdrop-filter: blur(8px);
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-    position: relative;
-    overflow: hidden;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
   }
-
-  .ball-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--violet-2), transparent);
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-
-  .ball-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--violet-2);
-    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-  }
-
-  .ball-card:hover::before { opacity: 1; }
-
+  .ball-card:hover { transform: translateY(-4px); border-color: var(--violet-2); box-shadow: 0 10px 30px rgba(124,58,237,.3); }
   .ball-img {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 12px;
-    display: block;
+    width: 72px; height: 72px; margin: 0 auto 12px; display: block;
     filter: drop-shadow(0 0 12px var(--violet-glow));
-    transition: transform 0.3s;
+    transition: transform .3s;
   }
-
-  .ball-card:hover .ball-img {
-    transform: scale(1.1) rotate(-5deg);
-  }
-
-  .ball-name {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-    text-align: center;
-  }
-
-  .ball-tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: rgba(168, 85, 247, 0.15);
-    color: var(--violet-3);
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    margin: 0 auto 12px;
-    text-align: center;
-  }
-
+  .ball-card:hover .ball-img { transform: scale(1.1) rotate(-5deg); }
+  .ball-name { font-size: 1.15rem; font-weight: 700; color: #fff; text-align: center; }
   .ball-tag-wrap { text-align: center; }
-
-  .ball-desc {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    text-align: center;
+  .ball-tag {
+    display: inline-block; font-size: .75rem; padding: 3px 10px; border-radius: 999px;
+    background: rgba(168,85,247,.15); color: var(--violet-3);
+    border: 1px solid rgba(168,85,247,.3); margin: 6px 0 12px;
   }
+  .ball-desc { font-size: .9rem; color: var(--text-dim); text-align: center; }
 
-  /* О проекте */
   .about {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 40px;
-    backdrop-filter: blur(8px);
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 1.05rem;
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;
+    padding: 40px; backdrop-filter: blur(8px); max-width: 800px; margin: 0 auto;
+    text-align: center; color: var(--text-dim);
   }
 
-  /* Footer */
   footer {
-    padding: 40px 0;
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.9rem;
+    padding: 36px 0; text-align: center; color: var(--text-dim); font-size: .9rem;
     border-top: 1px solid var(--card-border);
-    margin-top: 40px;
   }
 
-  footer a {
-    color: var(--violet-3);
-    text-decoration: none;
+  @media (max-width: 640px) {
+    .about-author { grid-template-columns: 1fr; text-align: center; }
+    .about-author img { max-width: 220px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -318,60 +216,104 @@
 
 <header>
   <div class="container header-inner">
-    <div class="logo" style="display: flex; align-items: center; gap: 12px;">
-  <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="ball" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#1a0f33"/>
-        <stop offset="50%" stop-color="#0f0820"/>
-        <stop offset="50%" stop-color="#2e1065"/>
-        <stop offset="100%" stop-color="#4c1d95"/>
-      </linearGradient>
-      <filter id="neon">
-        <feGaussianBlur stdDeviation="2" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    <!-- Внешнее свечение -->
-    <circle cx="50" cy="50" r="48" fill="url(#glow)"/>
-    <!-- Основной шар -->
-    <circle cx="50" cy="50" r="42" fill="url(#ball)" stroke="#a855f7" stroke-width="1.5" filter="url(#neon)"/>
-    <!-- Горизонтальная полоса -->
-    <rect x="8" y="48" width="84" height="4" fill="#000" rx="2"/>
-    <!-- Центральная кнопка -->
-    <circle cx="50" cy="50" r="12" fill="#0f0820" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
-    <circle cx="50" cy="50" r="7" fill="#c084fc" filter="url(#neon)"/>
-    <circle cx="50" cy="50" r="4" fill="#e9d5ff"/>
-  </svg>
-  <span>POKÉBALLS</span>
-</div>
+    <div class="logo">POKÉBALLS</div>
+    <nav>
+      <a href="#balls">Покеболы</a>
+      <a href="#subjects">Дисциплины</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container">
 
+  <!-- HERO + автор + видео -->
   <section class="hero">
     <h1>Энциклопедия покеболов мира Pokémon</h1>
     <p>Все виды покеболов, их особенности, редкость и назначение в одном месте.</p>
 
-    <!-- Квадратное окно для 3D-видео -->
+    <div class="author-block">
+      <div class="name">Автор: Хоробрых Сергей Вадимович</div>
+      <div class="spec">Специальность: Информационные системы и программирование</div>
+    </div>
+
     <div class="video-frame">
       <div class="video-inner">
-  <video autoplay muted loop playsinline>
-  <source src="https://github.com/user-attachments/assets/0d58a467-49f2-4c2a-911c-c7d9123f6d76" type="video/mp4">
-</video>
-    Ваш браузер не поддерживает видео.
-  </video>
-</div>
+        <video autoplay muted loop playsinline>
+          <source src="pokeball-3d.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="video-caption">Pokeball</div>
+    <p class="video-purpose">
+      <strong>Назначение покебола:</strong> это устройство для ловли, хранения и переноса
+      покемонов. Тренер бросает шар в покемона, тот вскрывается, захватывает цель и
+      фиксирует её внутри. В бою покеболы выпускают покемонов обратно — без них
+      путешествие и сражения были бы невозможны.
+    </p>
+  </section>
+
+  <!-- Об авторе -->
+  <section id="author">
+    <h2 class="section-title">Об авторе проекта</h2>
+    <div class="about-author">
+      <img src="img/emblem.png" alt="Эмблема учебного заведения">
+      <div>
+        <h3>Хоробрых Сергей Вадимович</h3>
+        <p>
+          Студент специальности «Информационные системы и программирование».
+          Данный проект — учебная работа, объединяющая веб-разработку, 3D-графику
+          и дизайн интерфейсов: энциклопедия покеболов с интерактивным каталогом
+          и 3D-анимацией модели покебола.
+        </p>
+      </div>
     </div>
   </section>
 
+  <!-- Дисциплины -->
+  <section id="subjects">
+    <h2 class="section-title">Изучаемые дисциплины</h2>
+    <div class="subjects-grid">
+      <div class="subject-card">
+        <span class="subject-code">МДК 05.01</span>
+        <h3>Проектирование и дизайн информационных систем</h3>
+        <p>Разработка пользовательских интерфейсов (UI/UX), прототипирование и проектирование структуры веб-приложений.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-code">МДК 05.02</span>
+        <h3>Разработка кода информационных систем</h3>
+        <p>Вёрстка и программирование клиентской части на HTML5, CSS3 и современном JavaScript (ES6+).</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-code">ОП.08</span>
+        <h3>Компьютерная графика и 3D-моделирование</h3>
+        <p>Создание полигональных 3D-моделей, настройка материалов, освещения и рендеринг сцен в Blender.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-code">МДК 01.01</span>
+        <h3>Разработка программных модулей</h3>
+        <p>Алгоритмизация, объектно-ориентированное программирование и построение логики интерактивных модулей.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-code">МДК 02.02</span>
+        <h3>Управление базами данных</h3>
+        <p>Проектирование реляционных структур данных, написание SQL-запросов и организация хранения информации.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-code">МДК 05.03</span>
+        <h3>Тестирование информационных систем</h3>
+        <p>Проверка корректности работы веб-интерфейсов, адаптивности вёрстки и кроссбраузерной совместимости.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Баннер разработчика -->
+  <section class="dev-banner">
+    <img src="img/developer.png" alt="Разработка информационных систем">
+    <p>Проект создан с применением навыков веб-разработки и 3D-моделирования 🎮</p>
+  </section>
+
+  <!-- Каталог -->
   <section id="balls">
     <h2 class="section-title">Каталог покеболов</h2>
     <div class="balls-grid" id="grid"></div>
@@ -391,54 +333,45 @@
 
 <footer>
   <div class="container">
-    PokéBalls Encyclopedia · Pokémon Fan Project · 2026
+    PokéBalls Encyclopedia · Автор: Хоробрых С. В. · Информационные системы и программирование · 2026
   </div>
 </footer>
 
 <script>
   const balls = [
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png", tag: "Обычный", name: "Poké Ball", desc: "Стандартный покебол, предназначенный для ловли покемонов. Один из самых узнаваемых предметов вселенной." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png", tag: "Усиленный", name: "Great Ball", desc: "Улучшенный покебол с более высоким шансом успешной ловли по сравнению с обычным." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png", tag: "Усиленный", name: "Ultra Ball", desc: "Один из наиболее эффективных стандартных покеболов. Подходит для ловли более трудных покемонов." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png", tag: "Редкий", name: "Master Ball", desc: "Особенный покебол, который в основных играх гарантированно ловит покемона." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/premier-ball.png", tag: "Праздничный", name: "Premier Ball", desc: "Стильный белый покебол, который обычно выдаётся в качестве бонуса при покупке других покеболов." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/luxury-ball.png", tag: "Комфорт", name: "Luxury Ball", desc: "Покебол, который помогает покемону быстрее привыкнуть к тренеру и повышает дружбу." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heal-ball.png", tag: "Поддержка", name: "Heal Ball", desc: "После ловли восстанавливает здоровье покемона и устраняет некоторые статусные проблемы." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/net-ball.png", tag: "Водный", name: "Net Ball", desc: "Особенно эффективен при ловле покемонов водного и насекомого типов." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dive-ball.png", tag: "Водный", name: "Dive Ball", desc: "Покебол, который особенно эффективен при ловле покемонов, связанных с водой." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/nest-ball.png", tag: "Природа", name: "Nest Ball", desc: "Более эффективен при ловле покемонов с низким уровнем." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/repeat-ball.png", tag: "Повторная ловля", name: "Repeat Ball", desc: "Повышает эффективность ловли покемонов, которых тренер уже зарегистрировал в Покедексе." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png", tag: "Время", name: "Timer Ball", desc: "Становится эффективнее по мере увеличения продолжительности битвы." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/quick-ball.png", tag: "Скорость", name: "Quick Ball", desc: "Особенно эффективен в начале битвы, пока прошло мало ходов." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dusk-ball.png", tag: "Ночной", name: "Dusk Ball", desc: "Повышает шанс ловли в темноте и некоторых подходящих местах, в зависимости от игры." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dream-ball.png", tag: "Сновидения", name: "Dream Ball", desc: "Покебол с тематикой снов. В некоторых играх особенно эффективен против покемонов, находящихся в состоянии сна." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/beast-ball.png", tag: "Особый", name: "Beast Ball", desc: "Специальный покебол, созданный для ловли Ультра-чудовищ. При ловле обычных покемонов он менее эффективен." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/fast-ball.png", tag: "Скорость", name: "Fast Ball", desc: "Покебол, предназначенный для ловли покемонов, которые способны быстро убегать." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/level-ball.png", tag: "Уровень", name: "Level Ball", desc: "Особенно эффективен, когда уровень покемона тренера значительно выше уровня цели." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lure-ball.png", tag: "Водный", name: "Lure Ball", desc: "Помогает ловить покемонов, которых привлекают приманки или рыбалка." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heavy-ball.png", tag: "Тяжёлый", name: "Heavy Ball", desc: "Покебол, предназначенный для ловли тяжёлых покемонов." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/love-ball.png", tag: "Дружба", name: "Love Ball", desc: "Особенно эффективен при ловле покемонов того же вида, что и покемон противоположного пола тренера." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/friend-ball.png", tag: "Дружба", name: "Friend Ball", desc: "Покебол, который помогает быстрее наладить дружеские отношения с пойманным покемоном." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/moon-ball.png", tag: "Лунный", name: "Moon Ball", desc: "Особенно эффективен при ловле покемонов, связанных с эволюцией при помощи Лунного камня." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sport-ball.png", tag: "Спортивный", name: "Sport Ball", desc: "Покебол, связанный с соревнованиями по ловле насекомых в некоторых играх." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/safari-ball.png", tag: "Коллекционный", name: "Safari Ball", desc: "Специальный покебол, используемый в зонах сафари в различных играх серии." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cherish-ball.png", tag: "Коллекционный", name: "Cherish Ball", desc: "Красивый красный покебол, в котором обычно выдаются покемоны специальных событий." },
-  { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/park-ball.png", tag: "Особый", name: "Park Ball", desc: "Покебол, используемый в некоторых специальных игровых режимах и парковых зонах." },
-  
-  // GS Ball — золотисто-серебристый (SVG встроен)
-  { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="gs" cx="35%" cy="30%"><stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#b8860b"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#gs)" stroke="#8b6914" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="#c0c0c0" stroke="#808080" stroke-width="2"/><circle cx="32" cy="32" r="5" fill="#fff"/><rect x="4" y="30" width="56" height="4" fill="#8b6914" rx="2"/></svg>'), tag: "Особый", name: "GS Ball", desc: "Загадочный золотисто-серебристый шар из мира Pokémon, связанный с историей Селеби." },
-  
-  // Old Ball — деревянный старинный (SVG встроен)
-  { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="ob" cx="35%" cy="30%"><stop offset="0%" stop-color="#d4a574"/><stop offset="100%" stop-color="#8b5a2b"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#ob)" stroke="#5c3a1e" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="#f5deb3" stroke="#8b5a2b" stroke-width="2"/><circle cx="32" cy="32" r="5" fill="#fff"/><rect x="4" y="30" width="56" height="4" fill="#5c3a1e" rx="2"/></svg>'), tag: "Исторический", name: "Old Ball", desc: "Старинный покебол, встречающийся в Pokémon Legends: Arceus, отражающий технологии прошлого." },
-  
-  // Wing Ball — с крыльями, голубой (SVG встроен)
-  { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="wb" cx="35%" cy="30%"><stop offset="0%" stop-color="#87ceeb"/><stop offset="100%" stop-color="#4682b4"/></radialGradient></defs><circle cx="32" cy="32" r="26" fill="url(#wb)" stroke="#2f4f6f" stroke-width="2"/><path d="M8 28 Q16 20 24 28" fill="#e0e0e0" stroke="#2f4f6f" stroke-width="1.5"/><path d="M56 28 Q48 20 40 28" fill="#e0e0e0" stroke="#2f4f6f" stroke-width="1.5"/><circle cx="32" cy="32" r="9" fill="#fff" stroke="#2f4f6f" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#4682b4"/><rect x="6" y="30" width="52" height="4" fill="#2f4f6f" rx="2"/></svg>'), tag: "Исторический", name: "Wing Ball", desc: "Усовершенствованный покебол из Pokémon Legends: Arceus, позволяющий бросать его дальше и быстрее." },
-  
-  // Jet Ball — реактивный, тёмно-синий (SVG встроен)
-  { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="jb" cx="35%" cy="30%"><stop offset="0%" stop-color="#4a5568"/><stop offset="100%" stop-color="#1a202c"/></radialGradient></defs><circle cx="32" cy="32" r="26" fill="url(#jb)" stroke="#000" stroke-width="2"/><path d="M10 26 L18 32 L10 38 Z" fill="#a0aec0"/><path d="M54 26 L46 32 L54 38 Z" fill="#a0aec0"/><circle cx="32" cy="32" r="9" fill="#e53e3e" stroke="#000" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#fff"/><rect x="6" y="30" width="52" height="4" fill="#000" rx="2"/></svg>'), tag: "Исторический", name: "Jet Ball", desc: "Особый покебол из Pokémon Legends: Arceus, предназначенный для дальних и быстрых бросков." }
-];
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png", tag: "Обычный", name: "Poké Ball", desc: "Стандартный покебол, предназначенный для ловли покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png", tag: "Усиленный", name: "Great Ball", desc: "Улучшенный покебол с более высоким шансом успешной ловли." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png", tag: "Усиленный", name: "Ultra Ball", desc: "Один из наиболее эффективных стандартных покеболов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png", tag: "Редкий", name: "Master Ball", desc: "Гарантированно ловит покемона в основных играх." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/premier-ball.png", tag: "Праздничный", name: "Premier Ball", desc: "Белый покебол, выдаваемый в качестве бонуса." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/luxury-ball.png", tag: "Комфорт", name: "Luxury Ball", desc: "Помогает покемону быстрее привыкнуть к тренеру." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heal-ball.png", tag: "Поддержка", name: "Heal Ball", desc: "Восстанавливает здоровье пойманного покемона." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/net-ball.png", tag: "Водный", name: "Net Ball", desc: "Эффективен против водных и насекомых типов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dive-ball.png", tag: "Водный", name: "Dive Ball", desc: "Эффективен при ловле водных покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/nest-ball.png", tag: "Природа", name: "Nest Ball", desc: "Эффективнее против покемонов с низким уровнем." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/repeat-ball.png", tag: "Повторная ловля", name: "Repeat Ball", desc: "Эффективен против уже пойманных видов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png", tag: "Время", name: "Timer Ball", desc: "Набирает силу с ходом битвы." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/quick-ball.png", tag: "Скорость", name: "Quick Ball", desc: "Максимально эффективен в первых ходах." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dusk-ball.png", tag: "Ночной", name: "Dusk Ball", desc: "Работает лучше в тёмное время суток." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dream-ball.png", tag: "Сновидения", name: "Dream Ball", desc: "Эффективен против спящих покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/beast-ball.png", tag: "Особый", name: "Beast Ball", desc: "Создан для ловли Ультра-чудовищ." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/fast-ball.png", tag: "Скорость", name: "Fast Ball", desc: "Для быстрых и пугливых покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/level-ball.png", tag: "Уровень", name: "Level Ball", desc: "Сильнее, когда уровень тренера выше." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lure-ball.png", tag: "Водный", name: "Lure Ball", desc: "Идеален для рыбалки." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heavy-ball.png", tag: "Тяжёлый", name: "Heavy Ball", desc: "Для тяжёлых покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/love-ball.png", tag: "Дружба", name: "Love Ball", desc: "Эффективен против покемонов того же вида." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/friend-ball.png", tag: "Дружба", name: "Friend Ball", desc: "Помогает наладить дружбу с покемоном." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/moon-ball.png", tag: "Лунный", name: "Moon Ball", desc: "Для покемонов, эволюционирующих камнем." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sport-ball.png", tag: "Спортивный", name: "Sport Ball", desc: "Используется на соревнованиях." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/safari-ball.png", tag: "Коллекционный", name: "Safari Ball", desc: "Специальный шар для зон сафари." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cherish-ball.png", tag: "Коллекционный", name: "Cherish Ball", desc: "Красный шар для событийных покемонов." },
+    { img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/park-ball.png", tag: "Особый", name: "Park Ball", desc: "Для специальных игровых режимов." },
+    { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="gs" cx="35%" cy="30%"><stop offset="0%" stop-color="#ffd700"/><stop offset="100%" stop-color="#b8860b"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#gs)" stroke="#8b6914" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="#c0c0c0" stroke="#808080" stroke-width="2"/><circle cx="32" cy="32" r="5" fill="#fff"/><rect x="4" y="30" width="56" height="4" fill="#8b6914" rx="2"/></svg>'), tag: "Особый", name: "GS Ball", desc: "Загадочный золотисто-серебристый шар, связанный с Селеби." },
+    { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="ob" cx="35%" cy="30%"><stop offset="0%" stop-color="#d4a574"/><stop offset="100%" stop-color="#8b5a2b"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(#ob)" stroke="#5c3a1e" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="#f5deb3" stroke="#8b5a2b" stroke-width="2"/><circle cx="32" cy="32" r="5" fill="#fff"/><rect x="4" y="30" width="56" height="4" fill="#5c3a1e" rx="2"/></svg>'), tag: "Исторический", name: "Old Ball", desc: "Старинный деревянный покебол из Pokémon Legends: Arceus." },
+    { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="wb" cx="35%" cy="30%"><stop offset="0%" stop-color="#87ceeb"/><stop offset="100%" stop-color="#4682b4"/></radialGradient></defs><circle cx="32" cy="32" r="26" fill="url(#wb)" stroke="#2f4f6f" stroke-width="2"/><path d="M8 28 Q16 20 24 28" fill="#e0e0e0" stroke="#2f4f6f" stroke-width="1.5"/><path d="M56 28 Q48 20 40 28" fill="#e0e0e0" stroke="#2f4f6f" stroke-width="1.5"/><circle cx="32" cy="32" r="9" fill="#fff" stroke="#2f4f6f" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#4682b4"/><rect x="6" y="30" width="52" height="4" fill="#2f4f6f" rx="2"/></svg>'), tag: "Исторический", name: "Wing Ball", desc: "Покебол с крыльями — летит дальше и быстрее." },
+    { img: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="jb" cx="35%" cy="30%"><stop offset="0%" stop-color="#4a5568"/><stop offset="100%" stop-color="#1a202c"/></radialGradient></defs><circle cx="32" cy="32" r="26" fill="url(#jb)" stroke="#000" stroke-width="2"/><path d="M10 26 L18 32 L10 38 Z" fill="#a0aec0"/><path d="M54 26 L46 32 L54 38 Z" fill="#a0aec0"/><circle cx="32" cy="32" r="9" fill="#e53e3e" stroke="#000" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#fff"/><rect x="6" y="30" width="52" height="4" fill="#000" rx="2"/></svg>'), tag: "Исторический", name: "Jet Ball", desc: "Реактивный покебол для дальних и быстрых бросков." }
+  ];
 
-  // SVG-заглушка на случай, если картинка не загрузится
   const fallbackSvg = 'data:image/svg+xml;utf8,' + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">' +
     '<defs><radialGradient id="g" cx="35%" cy="35%"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient></defs>' +
