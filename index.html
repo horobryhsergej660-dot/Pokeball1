@@ -173,6 +173,7 @@
       #000;
     text-align: center;
     padding: 20px;
+    video-placeholder { display: none; }
   }
 
   .video-placeholder .icon {
@@ -334,15 +335,11 @@
     <!-- Квадратное окно для 3D-видео -->
     <div class="video-frame">
       <div class="video-inner">
-        <!-- Замените src на путь к вашему видео или вставьте iframe -->
-        <video autoplay muted loop playsinline poster="">
-          <source src="3d-model.mp4" type="video/mp4">
-        </video>
-        <div class="video-placeholder">
-          <div class="icon">◈</div>
-          <div>3D-модель покебола<br><small>загрузите video/iframe в .video-inner</small></div>
-        </div>
-      </div>
+  <video autoplay muted loop playsinline>
+    <source src="pokeball-3d.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+</div>
     </div>
   </section>
 
