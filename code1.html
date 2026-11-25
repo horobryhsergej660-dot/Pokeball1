@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéBalls | Энциклопедия</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --accent-red: #ee1515;
+            --shadow: 0 4 px 6 px rgb a (0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent-red), #ff4d4d);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            text-align: center;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #333;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 64px;
+            height: 64px;
+            image-rendering: pixelated;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        .rarity {
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        /* Цвета для категорий */
+        .rarity-ordinary { background: #888; }
+        .rarity-enhanced { background: #3498db; }
+        .rarity-rare { background: #f1c40f; color: #333; }
+        .rarity-holiday { background: #e91e63; }
+        .rarity-comfort { background: #9b59b6; }
+        .rarity-support { background: #2ecc71; }
+        .rarity-water { background: #00bcd4; }
+        .rarity-nature { background: #4caf50; }
+        .rarity-repeat { background: #ff9800; }
+        .rarity-time { background: #795548; }
+        .rarity-speed { background: #ff5722; }
+        .rarity-night { background: #3f51b5; }
+        .rarity-dream { background: #ba68c8; }
+        .rarity-special { background: #607d8b; }
+        .rarity-level { background: #e67e22; }
+        .rarity-heavy { background: #5d4037; }
+        .rarity-friendship { background: #ec407a; }
+        .rarity-moon { background: #fff59d; color: #333; }
+        .rarity-sport { background: #8bc34a; }
+        .rarity-collectible { background: #d4af37; color: #333; }
+        .rarity-historical { background: #bcaaa4; color: #333; }
+
+        .card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .about-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>POKÉBALLS</h1>
+    <p>Энциклопедия покеболов мира Pokémon</p>
+</header>
+
+<nav>
+    <a href="#balls">Покеболы</a>
+    <a href="#about">О проекте</a>
+</nav>
+
+<main>
+    <section id="balls" class="grid">
+        <!-- Обычный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Poké Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-ordinary">Обычный</span>
+            <h3>Poké Ball</h3>
+            <p>Стандартный покебол, предназначенный для ловли покемонов. Один из самых узнаваемых предметов вселенной.</p>
+        </div>
+        <!-- Усиленный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png" alt="Great Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-enhanced">Усиленный</span>
+            <h3>Great Ball</h3>
+            <p>Улучшенный покебол с более высоким шансом успешной ловли по сравнению с обычным.</p>
+        </div>
+        <!-- Усиленный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png" alt="Ultra Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-enhanced">Усиленный</span>
+            <h3>Ultra Ball</h3>
+            <p>Один из наиболее эффективных стандартных покеболов. Подходит для ловли более трудных покемонов.</p>
+        </div>
+        <!-- Редкий -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" alt="Master Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-rare">Редкий</span>
+            <h3>Master Ball</h3>
+            <p>Особенный покебол, который в основных играх гарантированно ловит покемона.</p>
+        </div>
+        <!-- Праздничный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/premier-ball.png" alt="Premier Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-holiday">Праздничный</span>
+            <h3>Premier Ball</h3>
+            <p>Стильный белый покебол, который обычно выдаётся в качестве бонуса при покупке других покеболов.</p>
+        </div>
+        <!-- Комфорт -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/luxury-ball.png" alt="Luxury Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-comfort">Комфорт</span>
+            <h3>Luxury Ball</h3>
+            <p>Покебол, который помогает покемону быстрее привыкнуть к тренеру и повышает дружбу.</p>
+        </div>
+        <!-- Поддержка -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heal-ball.png" alt="Heal Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-support">Поддержка</span>
+            <h3>Heal Ball</h3>
+            <p>После ловли восстанавливает здоровье покемона и устраняет некоторые статусные проблемы.</p>
+        </div>
+        <!-- Водный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/net-ball.png" alt="Net Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-water">Водный</span>
+            <h3>Net Ball</h3>
+            <p>Особенно эффективен при ловле покемонов водного и насекомого типов.</p>
+        </div>
+        <!-- Водный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dive-ball.png" alt="Dive Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-water">Водный</span>
+            <h3>Dive Ball</h3>
+            <p>Покебол, который особенно эффективен при ловле покемонов, связанных с водой.</p>
+        </div>
+        <!-- Природа -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/nest-ball.png" alt="Nest Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-nature">Природа</span>
+            <h3>Nest Ball</h3>
+            <p>Более эффективен при ловле покемонов с низким уровнем.</p>
+        </div>
+        <!-- Повторная ловля -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/repeat-ball.png" alt="Repeat Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-repeat">Повторная ловля</span>
+            <h3>Repeat Ball</h3>
+            <p>Повышает эффективность ловли покемонов, которых тренер уже зарегистрировал в Покедексе.</p>
+        </div>
+        <!-- Время -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png" alt="Timer Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-time">Время</span>
+            <h3>Timer Ball</h3>
+            <p>Становится эффективнее по мере увеличения продолжительности битвы.</p>
+        </div>
+        <!-- Скорость -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/quick-ball.png" alt="Quick Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-speed">Скорость</span>
+            <h3>Quick Ball</h3>
+            <p>Особенно эффективен в начале битвы, пока прошло мало ходов.</p>
+        </div>
+        <!-- Ночной -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dusk-ball.png" alt="Dusk Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-night">Ночной</span>
+            <h3>Dusk Ball</h3>
+            <p>Повышает шанс ловли в темноте и некоторых подходящих местах, в зависимости от игры.</p>
+        </div>
+        <!-- Сновидения -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dream-ball.png" alt="Dream Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-dream">Сновидения</span>
+            <h3>Dream Ball</h3>
+            <p>Покебол с тематикой снов. В некоторых играх особенно эффективен против покемонов, находящихся в состоянии сна.</p>
+        </div>
+        <!-- Особый -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/beast-ball.png" alt="Beast Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-special">Особый</span>
+            <h3>Beast Ball</h3>
+            <p>Специальный покебол, созданный для ловли Ультра-чудовищ. При ловле обычных покемонов он менее эффективен.</p>
+        </div>
+        <!-- Скорость -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/fast-ball.png" alt="Fast Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-speed">Скорость</span>
+            <h3>Fast Ball</h3>
+            <p>Покебол, предназначенный для ловли покемонов, которые способны быстро убегать.</p>
+        </div>
+        <!-- Уровень -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/level-ball.png" alt="Level Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-level">Уровень</span>
+            <h3>Level Ball</h3>
+            <p>Особенно эффективен, когда уровень покемона тренера значительно выше уровня цели.</p>
+        </div>
+        <!-- Водный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lure-ball.png" alt="Lure Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-water">Водный</span>
+            <h3>Lure Ball</h3>
+            <p>Помогает ловить покемонов, которых привлекают приманки или рыбалка.</p>
+        </div>
+        <!-- Тяжёлый -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heavy-ball.png" alt="Heavy Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-heavy">Тяжёлый</span>
+            <h3>Heavy Ball</h3>
+            <p>Покебол, предназначенный для ловли тяжёлых покемонов.</p>
+        </div>
+        <!-- Дружба -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/love-ball.png" alt="Love Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-friendship">Дружба</span>
+            <h3>Love Ball</h3>
+            <p>Особенно эффективен при ловле покемонов того же вида, что и покемон противоположного пола тренера.</p>
+        </div>
+        <!-- Дружба -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/friend-ball.png" alt="Friend Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-friendship">Дружба</span>
+            <h3>Friend Ball</h3>
+            <p>Покебол, который помогает быстрее наладить дружеские отношения с пойманным покемоном.</p>
+        </div>
+        <!-- Лунный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/moon-ball.png" alt="Moon Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-moon">Лунный</span>
+            <h3>Moon Ball</h3>
+            <p>Особенно эффективен при ловле покемонов, связанных с эволюцией при помощи Лунного камня.</p>
+        </div>
+        <!-- Спортивный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sport-ball.png" alt="Sport Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-sport">Спортивный</span>
+            <h3>Sport Ball</h3>
+            <p>Покебол, связанный с соревнованиями по ловле насекомых в некоторых играх.</p>
+        </div>
+        <!-- Коллекционный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/safari-ball.png" alt="Safari Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-collectible">Коллекционный</span>
+            <h3>Safari Ball</h3>
+            <p>Специальный покебол, используемый в зонах сафари в различных играх серии.</p>
+        </div>
+        <!-- Коллекционный -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cherish-ball.png" alt="Cherish Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-collectible">Коллекционный</span>
+            <h3>Cherish Ball</h3>
+            <p>Красивый красный покебол, в котором обычно выдаются покемоны специальных событий.</p>
+        </div>
+        <!-- Особый -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/park-ball.png" alt="Park Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-special">Особый</span>
+            <h3>Park Ball</h3>
+            <p>Покебол, используемый в некоторых специальных игровых режимах и парковых зонах.</p>
+        </div>
+        <!-- Особый -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/gs-ball.png" alt="GS Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <span class="rarity rarity-special">Особый</span>
+            <h3>GS Ball</h3>
+            <p>Загадочный золотисто-серебристый шар из мира Pokémon, связанный с историей Селеби.</p>
+        </div>
+        
+        <!-- ПОСЛЕДНИЕ 3 ИСТОРИЧЕСКИХ ПОКЕБОЛА (С ИСПРАВЛЕНИЕМ) -->
+        <!-- Исторический -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/old-ball.png" alt="Old Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/strange-ball.png'">
+            <span class="rarity rarity-historical">Исторический</span>
+            <h3>Old Ball</h3>
+            <p>Старинный покебол, встречающийся в Pokémon Legends: Arceus, отражающий технологии прошлого.</p>
+        </div>
+        <!-- Исторический -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/wing-ball.png" alt="Wing Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/feather-ball.png'">
+            <span class="rarity rarity-historical">Исторический</span>
+            <h3>Wing Ball</h3>
+            <p>Усовершенствованный покебол из Pokémon Legends: Arceus, позволяющий бросать его дальше и быстрее.</p>
+        </div>
+        <!-- Исторический -->
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/jet-ball.png" alt="Jet Ball" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/feather-ball.png'">
+            <span class="rarity rarity-historical">Исторический</span>
+            <h3>Jet Ball</h3>
+            <p>Особый покебол из Pokémon Legends: Arceus, предназначенный для дальних и быстрых бросков.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>О проекте</h2>
+        <p>Этот сайт представляет собой небольшую энциклопедию покеболов из вселенной Pokémon. Здесь собраны различные виды покеболов, их особенности и назначение. Некоторые покеболы отличаются повышенной эффективностью в определённых условиях, другие обладают уникальным дизайном или встречаются только в специальных событиях.</p>
+    </section>
+</main>
+
+<footer>
+    <p>PokéBalls Encyclopedia | Pokémon Fan Project</p>
+</footer>
+
+</body>
+</html># Pokeball
