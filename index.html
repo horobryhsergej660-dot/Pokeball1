@@ -164,15 +164,6 @@
   .subject-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
   .subject-card p { color: var(--text-dim); font-size: .9rem; }
 
-  .dev-banner { text-align: center; }
-  .dev-banner img {
-    max-width: 640px; width: 100%;
-    border-radius: 20px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
-  }
-  .dev-banner p { color: var(--text-dim); margin-top: 14px; }
-
   .balls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
   .ball-card {
     background: var(--card-bg);
@@ -259,29 +250,15 @@
   </section>
 
   <section id="author">
-  <h2 class="section-title">Об авторе проекта</h2>
-  <div class="about-author">
-    <img src="https://github.com/horobryhsergej660-dot/Pokeball1/releases/tag/aaa" 
-         alt="Эмблема" 
-         style="width:100%; border-radius:16px; box-shadow:0 0 30px rgba(168,85,247,0.5); border:1px solid rgba(168,85,247,0.25);"
-         onerror="this.style.display='none'">
-    <div>
-      <h3>Хоробрых Сергей Вадимович</h3>
-      <p>Студент специальности «Информационные системы и программирование». Данный проект — учебная работа, объединяющая веб-разработку, 3D-графику и дизайн интерфейсов: энциклопедия покеболов с интерактивным каталогом и 3D-анимацией модели покебола.</p>
+    <h2 class="section-title">Об авторе проекта</h2>
+    <div class="about-author">
+      <img src="img/emblem.png" alt="Эмблема" onerror="this.src='data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'220\' viewBox=\'0 0 220 220\'><rect width=\'220\' height=\'220\' fill=\'%231a0f33\' rx=\'16\'/><text x=\'110\' y=\'110\' font-size=\'40\' fill=\'%23a855f7\' text-anchor=\'middle\' dominant-baseline=\'middle\'>🛡️</text></svg>')">
+      <div>
+        <h3>Хоробрых Сергей Вадимович</h3>
+        <p>Студент специальности «Информационные системы и программирование». Данный проект — учебная работа, объединяющая веб-разработку, 3D-графику и дизайн интерфейсов: энциклопедия покеболов с интерактивным каталогом и 3D-анимацией модели покебола.</p>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="dev-banner">
-  <img src="https://github.com/horobryhsergej660-dot/Pokeball1/releases/tag/jj" 
-       alt="Разработка" 
-       style="max-width:640px; width:100%; border-radius:20px; border:1px solid rgba(168,85,247,0.25); box-shadow:0 0 40px rgba(124,58,237,0.35);"
-       onerror="this.style.display='none'">
-  <p style="color:#a79cc9; margin-top:14px;">Проект создан с применением навыков веб-разработки и 3D-моделирования 🎮</p>
-</section>
-<section class="dev-banner">
-  <img src="<img width="904" height="508" alt="473a84c6-6866-4bd2-bc0d-2a9e89a81ee1_image" src="https://github.com/user-attachments/assets/8c3369ca-e7c2-4cf7-9e03-c4d06d9e590f" />
-</section>
+  </section>
 
   <section id="subjects">
     <h2 class="section-title">Изучаемые дисциплины</h2>
@@ -318,7 +295,7 @@
       </div>
     </div>
   </section>
-  
+
   <section id="balls">
     <h2 class="section-title">Каталог покеболов</h2>
     <div class="balls-grid" id="grid"></div>
