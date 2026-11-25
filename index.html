@@ -509,6 +509,16 @@
     grid.appendChild(card);
   });
 </script>
-
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      document.getElementById('panel-interactive').style.display = tab === 'interactive' ? 'block' : 'none';
+      document.getElementById('panel-animation').style.display = tab === 'animation' ? 'block' : 'none';
+    });
+  });
+</script>
 </body>
 </html>
