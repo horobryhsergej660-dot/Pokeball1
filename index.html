@@ -5,70 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PokéBalls | Энциклопедия</title>
 <style>
-  /* Переключатель табов */
-.viewer-wrapper { display: flex; flex-direction: column; align-items: center; }
-
-.viewer-tabs {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 999px;
-  padding: 6px;
-  backdrop-filter: blur(8px);
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-dim);
-  font-size: .95rem;
-  font-weight: 600;
-  padding: 10px 22px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all .25s;
-  font-family: inherit;
-}
-
-.tab-btn:hover { color: var(--violet-3); }
-
-.tab-btn.active {
-  background: linear-gradient(135deg, var(--violet-2), var(--violet-1));
-  color: #fff;
-  box-shadow: 0 0 20px var(--violet-glow);
-}
-
-/* Панели просмотра */
-.viewer-panel {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.viewer-hint {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  color: var(--violet-3);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: .8rem;
-  border: 1px solid var(--card-border);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s;
-}
-
-.viewer-panel:hover .viewer-hint { opacity: 1; }
-
-@media (max-width: 500px) {
-  .tab-btn { font-size: .82rem; padding: 8px 14px; }
-}
   :root {
     --bg-0: #07040f;
     --bg-1: #0f0820;
@@ -81,9 +17,7 @@
     --card-bg: rgba(30, 18, 55, 0.55);
     --card-border: rgba(168, 85, 247, 0.25);
   }
-  
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     color: var(--text);
@@ -94,7 +28,6 @@
     min-height: 100vh;
     line-height: 1.6;
   }
-
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
   header {
@@ -105,36 +38,17 @@
     background: rgba(7, 4, 15, 0.7);
   }
   .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-   .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 30px var(--violet-glow);
-}
-
-.logo-icon {
-  filter: drop-shadow(0 0 10px var(--violet-glow));
-  animation: logoSpin 8s linear infinite;
-  transition: transform .3s;
-}
-
-.logo:hover .logo-icon {
-  transform: scale(1.15) rotate(15deg);
-}
-
-@keyframes logoSpin {
-  0%   { filter: drop-shadow(0 0 10px var(--violet-glow)); }
-  50%  { filter: drop-shadow(0 0 20px var(--violet-2)); }
-  100% { filter: drop-shadow(0 0 10px var(--violet-glow)); }
-}
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 1.6rem; font-weight: 800; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
+  .logo-icon {
+    filter: drop-shadow(0 0 10px var(--violet-glow));
+    transition: transform .3s;
+  }
+  .logo:hover .logo-icon { transform: scale(1.15) rotate(15deg); }
   nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; }
   nav a:hover { color: var(--violet-3); }
 
@@ -158,6 +72,31 @@
   .author-block .name { font-weight: 700; color: #fff; font-size: 1.05rem; }
   .author-block .spec { color: var(--violet-3); font-size: .92rem; margin-top: 2px; }
 
+  /* Переключатель табов */
+  .viewer-wrapper { display: flex; flex-direction: column; align-items: center; }
+  .viewer-tabs {
+    display: flex; gap: 12px; margin-bottom: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 6px;
+    backdrop-filter: blur(8px);
+  }
+  .tab-btn {
+    background: transparent; border: none;
+    color: var(--text-dim);
+    font-size: .95rem; font-weight: 600;
+    padding: 10px 22px; border-radius: 999px;
+    cursor: pointer; transition: all .25s;
+    font-family: inherit;
+  }
+  .tab-btn:hover { color: var(--violet-3); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--violet-2), var(--violet-1));
+    color: #fff;
+    box-shadow: 0 0 20px var(--violet-glow);
+  }
+
   .video-frame {
     width: min(480px, 88vw);
     aspect-ratio: 1 / 1;
@@ -174,6 +113,18 @@
   }
   .video-inner { width: 100%; height: 100%; border-radius: 16px; overflow: hidden; background: #000; position: relative; }
   .video-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .video-inner iframe { width: 100%; height: 100%; border: none; border-radius: 16px; }
+
+  .viewer-panel { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .viewer-hint {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.7); color: var(--violet-3);
+    padding: 6px 14px; border-radius: 999px; font-size: .8rem;
+    border: 1px solid var(--card-border);
+    pointer-events: none; opacity: 0; transition: opacity .3s;
+  }
+  .viewer-panel:hover .viewer-hint { opacity: 1; }
+
   .video-fallback {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
@@ -190,10 +141,7 @@
     text-shadow: 0 0 20px var(--violet-glow);
     letter-spacing: 1px;
   }
-  .video-purpose {
-    max-width: 620px; margin: 10px auto 0;
-    color: var(--text-dim); font-size: .98rem;
-  }
+  .video-purpose { max-width: 620px; margin: 10px auto 0; color: var(--text-dim); font-size: .98rem; }
 
   section { padding: 56px 0; }
   .section-title {
@@ -205,15 +153,9 @@
   }
 
   .about-author {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 32px;
-    align-items: center;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 32px;
-    backdrop-filter: blur(8px);
+    display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 20px; padding: 32px; backdrop-filter: blur(8px);
   }
   .about-author img {
     width: 100%; border-radius: 16px;
@@ -223,50 +165,35 @@
   .about-author h3 { color: #fff; margin-bottom: 8px; font-size: 1.3rem; }
   .about-author p { color: var(--text-dim); }
 
-  .subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+  .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
   .subject-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 22px;
-    backdrop-filter: blur(8px);
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 22px; backdrop-filter: blur(8px);
     transition: transform .25s, border-color .25s, box-shadow .25s;
   }
   .subject-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--violet-2);
+    transform: translateY(-4px); border-color: var(--violet-2);
     box-shadow: 0 10px 30px rgba(124, 58, 237, 0.35);
   }
   .subject-code {
-    display: inline-block;
-    font-size: .78rem; font-weight: 700;
+    display: inline-block; font-size: .78rem; font-weight: 700;
     padding: 4px 12px; border-radius: 999px;
-    background: rgba(168, 85, 247, 0.18);
-    color: var(--violet-3);
-    border: 1px solid rgba(168, 85, 247, 0.35);
-    margin-bottom: 12px;
+    background: rgba(168, 85, 247, 0.18); color: var(--violet-3);
+    border: 1px solid rgba(168, 85, 247, 0.35); margin-bottom: 12px;
   }
   .subject-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
   .subject-card p { color: var(--text-dim); font-size: .9rem; }
 
   .balls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
   .ball-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 20px;
-    backdrop-filter: blur(8px);
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 20px; backdrop-filter: blur(8px);
     transition: transform .25s, border-color .25s, box-shadow .25s;
   }
   .ball-card:hover { transform: translateY(-4px); border-color: var(--violet-2); box-shadow: 0 10px 30px rgba(124,58,237,.3); }
   .ball-img {
     width: 72px; height: 72px; margin: 0 auto 12px; display: block;
-    filter: drop-shadow(0 0 12px var(--violet-glow));
-    transition: transform .3s;
+    filter: drop-shadow(0 0 12px var(--violet-glow)); transition: transform .3s;
   }
   .ball-card:hover .ball-img { transform: scale(1.1) rotate(-5deg); }
   .ball-name { font-size: 1.15rem; font-weight: 700; color: #fff; text-align: center; }
@@ -292,6 +219,7 @@
   @media (max-width: 640px) {
     .about-author { grid-template-columns: 1fr; text-align: center; }
     .about-author img { max-width: 220px; margin: 0 auto; }
+    .tab-btn { font-size: .82rem; padding: 8px 14px; }
   }
 </style>
 </head>
@@ -300,34 +228,30 @@
 <header>
   <div class="container header-inner">
     <div class="logo">
-  <svg class="logo-icon" width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="ballTop" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#1a0f33"/>
-        <stop offset="100%" stop-color="#0a0518"/>
-      </linearGradient>
-      <linearGradient id="ballBottom" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#4c1d95"/>
-        <stop offset="100%" stop-color="#7c3aed"/>
-      </linearGradient>
-      <filter id="neon">
-        <feGaussianBlur stdDeviation="2" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    <!-- Верхняя половина -->
-    <path d="M50 8 A42 42 0 0 1 92 50 L8 50 A42 42 0 0 1 50 8 Z" fill="url(#ballTop)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
-    <!-- Нижняя половина -->
-    <path d="M8 50 L92 50 A42 42 0 0 1 8 50 Z" fill="url(#ballBottom)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
-    <!-- Центральная полоса -->
-    <rect x="8" y="47" width="84" height="6" fill="#000" stroke="#a855f7" stroke-width="1"/>
-    <!-- Кнопка -->
-    <circle cx="50" cy="50" r="13" fill="#0a0518" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
-    <circle cx="50" cy="50" r="7" fill="#c084fc" filter="url(#neon)"/>
-    <circle cx="50" cy="50" r="3" fill="#fff"/>
-  </svg>
-  <span>POKÉBALLS</span>
-</div>
+      <svg class="logo-icon" width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ballTop" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a0f33"/>
+            <stop offset="100%" stop-color="#0a0518"/>
+          </linearGradient>
+          <linearGradient id="ballBottom" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4c1d95"/>
+            <stop offset="100%" stop-color="#7c3aed"/>
+          </linearGradient>
+          <filter id="neon">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M50 8 A42 42 0 0 1 92 50 L8 50 A42 42 0 0 1 50 8 Z" fill="url(#ballTop)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+        <path d="M8 50 L92 50 A42 42 0 0 1 8 50 Z" fill="url(#ballBottom)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+        <rect x="8" y="47" width="84" height="6" fill="#000" stroke="#a855f7" stroke-width="1"/>
+        <circle cx="50" cy="50" r="13" fill="#0a0518" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+        <circle cx="50" cy="50" r="7" fill="#c084fc" filter="url(#neon)"/>
+        <circle cx="50" cy="50" r="3" fill="#fff"/>
+      </svg>
+      <span>POKÉBALLS</span>
+    </div>
     <nav>
       <a href="#balls">Покеболы</a>
       <a href="#subjects">Дисциплины</a>
@@ -347,50 +271,47 @@
       <div class="spec">Специальность: Информационные системы и программирование</div>
     </div>
 
-  <div class="viewer-wrapper">
-  <!-- Переключатель -->
-  <div class="viewer-tabs">
-    <button class="tab-btn active" data-tab="interactive">🎮 Интерактив</button>
-    <button class="tab-btn" data-tab="animation">🎬 Анимация</button>
-  </div>
-
-  <!-- Квадратное окно -->
-  <div class="video-frame">
-    <div class="video-inner">
-
-      <!-- ПЛАЖКА 1: Интерактивная 3D-модель () -->
-      <div class="viewer-panel" id="panel-interactive">
-        <iframe 
-          src="https://github.com/horobryhsergej660-dot/Pokeball1/releases/tag/aaa"
-          frameborder="0"
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          allowfullscreen
-          style="width:100%; height:100%; border:none; border-radius:16px;">
-        </iframe>
-        <div class="viewer-hint">🖱️ Крути мышью · Колёсико — зум</div>
+    <div class="viewer-wrapper">
+      <div class="viewer-tabs">
+        <button class="tab-btn active" data-tab="interactive">🎮 Интерактив</button>
+        <button class="tab-btn" data-tab="animation">🎬 Анимация</button>
       </div>
 
-      <!-- ПЛАЖКА 2: Видео-анимация -->
-      <div class="viewer-panel" id="panel-animation" style="display:none;">
-        <video autoplay muted loop playsinline controls style="width:100%; height:100%; object-fit:cover;">
-          <source src="https://github.com/user-attachments/assets/8d13452a-24a3-4695-a6b6-677db44e7a38" type="video/mp4">
-        </video>
-        <div class="video-fallback">
-          <div>
-            <div class="icon">◈</div>
-            <div>3D-модель покебола<br><small>видео не загружено</small></div>
+      <div class="video-frame">
+        <div class="video-inner">
+
+          <div class="viewer-panel" id="panel-interactive">
+            <iframe 
+              src="https://sketchfab.com/models/2fc1dfb294af4f0aab2369e422c7193a/embed?autostart=0&ui_theme=dark&ui_controls=1&ui_infos=0&ui_watermark=0&ui_hint=0"
+              frameborder="0"
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              allowfullscreen
+              style="width:100%; height:100%; border:none; border-radius:16px;">
+            </iframe>
+            <div class="viewer-hint">🖱️ Крути мышью · Колёсико — зум</div>
           </div>
+
+          <div class="viewer-panel" id="panel-animation" style="display:none;">
+            <video autoplay muted loop playsinline controls style="width:100%; height:100%; object-fit:cover;">
+              <source src="https://github.com/user-attachments/assets/8d13452a-24a3-4695-a6b6-677db44e7a38" type="video/mp4">
+            </video>
+            <div class="video-fallback">
+              <div>
+                <div class="icon">◈</div>
+                <div>3D-модель покебола<br><small>видео не загружено</small></div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
+      <div class="video-caption">Pokeball</div>
+      <p class="video-purpose">
+        <strong>Назначение покебола:</strong> это устройство для ловли, хранения и переноса покемонов. Тренер бросает шар в покемона, тот вскрывается, захватывает цель и фиксирует её внутри. В бою покеболы выпускают покемонов обратно — без них путешествие и сражения были бы невозможны.
+      </p>
     </div>
-  </div>
-
-  <div class="video-caption">Pokeball</div>
-  <p class="video-purpose">
-    <strong>Назначение покебола:</strong> это устройство для ловли, хранения и переноса покемонов. Тренер бросает шар в покемона, тот вскрывается, захватывает цель и фиксирует её внутри. В бою покеболы выпускают покемонов обратно — без них путешествие и сражения были бы невозможны.
-  </p>
-</div>
+  </section>
 
   <section id="author">
     <h2 class="section-title">Об авторе проекта</h2>
@@ -406,36 +327,12 @@
   <section id="subjects">
     <h2 class="section-title">Изучаемые дисциплины</h2>
     <div class="subjects-grid">
-      <div class="subject-card">
-        <span class="subject-code">МДК 05.01</span>
-        <h3>Проектирование и дизайн информационных систем</h3>
-        <p>Разработка пользовательских интерфейсов (UI/UX), прототипирование и проектирование структуры веб-приложений.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-code">МДК 05.02</span>
-        <h3>Разработка кода информационных систем</h3>
-        <p>Вёрстка и программирование клиентской части на HTML5, CSS3 и современном JavaScript (ES6+).</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-code">ОП.08</span>
-        <h3>Компьютерная графика и 3D-моделирование</h3>
-        <p>Создание полигональных 3D-моделей, настройка материалов, освещения и рендеринг сцен в Blender.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-code">МДК 01.01</span>
-        <h3>Разработка программных модулей</h3>
-        <p>Алгоритмизация, объектно-ориентированное программирование и построение логики интерактивных модулей.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-code">МДК 02.02</span>
-        <h3>Управление базами данных</h3>
-        <p>Проектирование реляционных структур данных, написание SQL-запросов и организация хранения информации.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-code">МДК 05.03</span>
-        <h3>Тестирование информационных систем</h3>
-        <p>Проверка корректности работы веб-интерфейсов, адаптивности вёрстки и кроссбраузерной совместимости.</p>
-      </div>
+      <div class="subject-card"><span class="subject-code">МДК 05.01</span><h3>Проектирование и дизайн информационных систем</h3><p>Разработка пользовательских интерфейсов (UI/UX), прототипирование и проектирование структуры веб-приложений.</p></div>
+      <div class="subject-card"><span class="subject-code">МДК 05.02</span><h3>Разработка кода информационных систем</h3><p>Вёрстка и программирование клиентской части на HTML5, CSS3 и современном JavaScript (ES6+).</p></div>
+      <div class="subject-card"><span class="subject-code">ОП.08</span><h3>Компьютерная графика и 3D-моделирование</h3><p>Создание полигональных 3D-моделей, настройка материалов, освещения и рендеринг сцен в Blender.</p></div>
+      <div class="subject-card"><span class="subject-code">МДК 01.01</span><h3>Разработка программных модулей</h3><p>Алгоритмизация, объектно-ориентированное программирование и построение логики интерактивных модулей.</p></div>
+      <div class="subject-card"><span class="subject-code">МДК 02.02</span><h3>Управление базами данных</h3><p>Проектирование реляционных структур данных, написание SQL-запросов и организация хранения информации.</p></div>
+      <div class="subject-card"><span class="subject-code">МДК 05.03</span><h3>Тестирование информационных систем</h3><p>Проверка корректности работы веб-интерфейсов, адаптивности вёрстки и кроссбраузерной совместимости.</p></div>
     </div>
   </section>
 
@@ -460,6 +357,18 @@
 </footer>
 
 <script>
+  // Переключение табов
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      document.getElementById('panel-interactive').style.display = tab === 'interactive' ? 'block' : 'none';
+      document.getElementById('panel-animation').style.display = tab === 'animation' ? 'block' : 'none';
+    });
+  });
+
+  // Каталог покеболов
   const fallbackSvg = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><defs><radialGradient id="g" cx="35%" cy="35%"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient></defs><circle cx="36" cy="36" r="30" fill="url(#g)"/><circle cx="36" cy="36" r="10" fill="#fff" opacity="0.9"/><rect x="6" y="33" width="60" height="6" fill="#1a0f33" rx="3"/></svg>');
 
   const balls = [
@@ -509,16 +418,6 @@
     grid.appendChild(card);
   });
 </script>
-<script>
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const tab = btn.dataset.tab;
-      document.getElementById('panel-interactive').style.display = tab === 'interactive' ? 'block' : 'none';
-      document.getElementById('panel-animation').style.display = tab === 'animation' ? 'block' : 'none';
-    });
-  });
-</script>
+
 </body>
 </html>
