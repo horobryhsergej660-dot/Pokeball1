@@ -41,11 +41,35 @@
     background: rgba(7, 4, 15, 0.7);
   }
   .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .logo {
-    font-size: 1.6rem; font-weight: 800; letter-spacing: 2px;
-    background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    text-shadow: 0 0 30px var(--violet-glow);
+   .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--violet-3), var(--violet-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px var(--violet-glow);
+}
+
+.logo-icon {
+  filter: drop-shadow(0 0 10px var(--violet-glow));
+  animation: logoSpin 8s linear infinite;
+  transition: transform .3s;
+}
+
+.logo:hover .logo-icon {
+  transform: scale(1.15) rotate(15deg);
+}
+
+@keyframes logoSpin {
+  0%   { filter: drop-shadow(0 0 10px var(--violet-glow)); }
+  50%  { filter: drop-shadow(0 0 20px var(--violet-2)); }
+  100% { filter: drop-shadow(0 0 10px var(--violet-glow)); }
+}
   }
   nav a { color: var(--text-dim); text-decoration: none; margin-left: 22px; transition: color .2s; }
   nav a:hover { color: var(--violet-3); }
@@ -211,7 +235,35 @@
 
 <header>
   <div class="container header-inner">
-    <div class="logo">POKÉBALLS</div>
+    <div class="logo">
+  <svg class="logo-icon" width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ballTop" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a0f33"/>
+        <stop offset="100%" stop-color="#0a0518"/>
+      </linearGradient>
+      <linearGradient id="ballBottom" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4c1d95"/>
+        <stop offset="100%" stop-color="#7c3aed"/>
+      </linearGradient>
+      <filter id="neon">
+        <feGaussianBlur stdDeviation="2" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <!-- Верхняя половина -->
+    <path d="M50 8 A42 42 0 0 1 92 50 L8 50 A42 42 0 0 1 50 8 Z" fill="url(#ballTop)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+    <!-- Нижняя половина -->
+    <path d="M8 50 L92 50 A42 42 0 0 1 8 50 Z" fill="url(#ballBottom)" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+    <!-- Центральная полоса -->
+    <rect x="8" y="47" width="84" height="6" fill="#000" stroke="#a855f7" stroke-width="1"/>
+    <!-- Кнопка -->
+    <circle cx="50" cy="50" r="13" fill="#0a0518" stroke="#a855f7" stroke-width="2" filter="url(#neon)"/>
+    <circle cx="50" cy="50" r="7" fill="#c084fc" filter="url(#neon)"/>
+    <circle cx="50" cy="50" r="3" fill="#fff"/>
+  </svg>
+  <span>POKÉBALLS</span>
+</div>
     <nav>
       <a href="#balls">Покеболы</a>
       <a href="#subjects">Дисциплины</a>
